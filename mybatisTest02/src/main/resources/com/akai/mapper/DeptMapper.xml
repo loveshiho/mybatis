@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.akai.mapper.DeptMapper">
+    <!-- int addDept(Dept dept);
+    useGeneratedKeys="true" 返回数据库帮我们生成的主键
+    keyProperty="deptno" 生成的主键值用我们dept对象那个属性存储
+    -->
+    <insert id="addDept" parameterType="dept" useGeneratedKeys="true" keyProperty="deptno">
+        insert into db_01.dept values(default(DEPTNO), #{dname}, #{loc})
+    </insert>
+</mapper>

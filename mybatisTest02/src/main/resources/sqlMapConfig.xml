@@ -22,5 +22,6 @@
     </environments>
     <mappers>
         <mapper class="com.akai.mapper.EmpMapper"/>
+        <mapper class="com.akai.mapper.DeptMapper"/>
     </mappers>
 </configuration>
