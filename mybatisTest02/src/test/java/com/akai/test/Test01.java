@@ -17,6 +17,7 @@ import java.util.List;
 
 public class Test01 {
     private SqlSession sqlSession;
+    private EmpMapper empMapper;
 
     @Before
     public void init() {
@@ -33,6 +34,7 @@ public class Test01 {
         }
         SqlSessionFactory factory = ssfb.build(resourceAsStream);
         sqlSession = factory.openSession();
+        empMapper = sqlSession.getMapper(EmpMapper.class);
     }
 
     @Test
@@ -40,6 +42,28 @@ public class Test01 {
         EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);    // 代理模式的体现
         List<Emp> all = empMapper.findAll();
         all.forEach(System.out::println);
+    }
+
+    @Test
+    public void testFindById() {
+        Emp emp = empMapper.findById(7900);
+        System.out.println(emp);
+    }
+
+    @Test
+    public void testFindByIdAndSal() {
+        List<Emp> emps = empMapper.findByIdAndSal(20, 1000);
+        emps.forEach(System.out::println);
+    }
+
+    @Test
+    public void testFindByIdAndSal2() {
+        Emp empa = new Emp();
+        empa.setDeptno(20);
+        Emp empb = new Emp();
+        empb.setSal(1000.0);
+        List<Emp> emps = empMapper.findByIdAndSal2(empa, empb);
+        emps.forEach(System.out::println);
     }
 
     @After
