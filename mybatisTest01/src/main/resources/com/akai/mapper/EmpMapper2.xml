@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EmpMapper2">
+    <!--
+    根据员工工号查询员工的所有信息
+    public Emp findById(int id);
+    parameterType 在有参数情况下也是可以省略不写的 mybatis可以根据实际情况自动判断
+
+    在sql语句上可以使用#{} ${}代表参数的占位
+    ${} 代表mybatis底层使用Statment语句对象,参数是以字符串拼接的形式设置
+    #{} 代表mybatis底层使用的preparedStatment语句对象,参数使用?作为占位符处理
+    #{} 以后常用
+    -->
+    <select id="findById" parameterType="int" resultType="emp">
+        select * from emp where db_01.emp.EMPNO = #{id}
+    </select>
+
+    <!--
+    参数为map集合
+    查询指定部门号和指定最低薪资的员工信息
+    20 号部门 且工资在1500以上的员工信息
+    public List<Emp> findEmpByDeptnoAndSal(int deptno,double sal);
+    <  >  最好要进行转译处理,参照HTML转译  w3school在线文档中有转译符号对应规则
+     Map<String,Object> args=new HashMap<>();
+        args.put("deptno", 20);
+        args.put("sal", 1500.0);
+    #{}中写的是map集合中,参数的键
+    -->
+    <select id="findByIdAndSal" resultType="emp">
+        select * from db_01.emp where DEPTNO = #{deptno} and SAL &gt; #{sal}
+    </select>
+
+    <!--
+    参数为对象
+    emp >>> 封装 deptno sal
+    参数是我们自定义的类型,那么 #{}中写的是参数的属性名
+    -->
+    <select id="findByIdAndSal2" resultType="emp" parameterType="emp">
+        select * from db_01.emp where DEPTNO = #{deptno} and SAL &gt;= #{sal}
+    </select>
+
+</mapper>

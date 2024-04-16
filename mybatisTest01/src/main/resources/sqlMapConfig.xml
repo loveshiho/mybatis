@@ -23,5 +23,6 @@
     <mappers>
         <mapper resource="com/akai/mapper/DeptMapper.xml"/>
         <mapper resource="com/akai/mapper/EmpMapper.xml"/>
+        <mapper resource="com/akai/mapper/EmpMapper2.xml"/>
     </mappers>
 </configuration>
