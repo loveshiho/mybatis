@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.akai.mapper.EmpMapper">
+    <!--
+     1 接口的名字和Mapper映射为文件名字必须保持一致(不包含拓展名)
+     2 Mapper映射文件的namespace必须是接口的全路径名
+     3 sql语句的id必须是对应方法的名
+     4 DeptMapper映射文件应该和接口编译之后放在同一个目录下
+     -->
+    <!--List<Emp> findAll();-->
+    <select id="findAll" resultType="emp">
+        select * from db_01.emp
+    </select>
+</mapper>
