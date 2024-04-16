@@ -66,6 +66,11 @@ public class Test01 {
         emps.forEach(System.out::println);
     }
 
+    @Test
+    public void testFindByEname() {
+        List<Emp> emps = empMapper.findByEname("a");
+        emps.forEach(System.out::println);
+    }
     @After
     public void release() {
         // 关闭 sqlSession

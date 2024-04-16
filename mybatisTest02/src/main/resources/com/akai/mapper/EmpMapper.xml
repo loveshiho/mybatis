@@ -44,5 +44,8 @@
         <!-- select * from emp where deptno = #{arg0.deptno} and sal >= #{arg1.sal} -->
         select * from db_01.emp where deptno = #{empa.deptno} and sal >= #{empb.sal}
     </select>
-
+    <!--List<Emp> findByEname(String ename);-->
+    <select id="findByEname" resultType="emp">
+        select * from db_01.emp where ENAME like concat('%',#{ename},'%')
+    </select>
 </mapper>

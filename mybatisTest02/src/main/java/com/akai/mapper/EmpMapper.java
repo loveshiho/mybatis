@@ -13,4 +13,6 @@ public interface EmpMapper {
     List<Emp> findByIdAndSal(@Param("deptno") int id, @Param("sal") double sal);  // 底层被封装为 map集合
 
     List<Emp> findByIdAndSal2(@Param("empa") Emp empa, @Param("empb") Emp empb);
+
+    List<Emp> findByEname(String ename);
 }
