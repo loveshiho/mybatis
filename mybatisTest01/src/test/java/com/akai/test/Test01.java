@@ -5,6 +5,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -12,8 +14,10 @@ import java.io.InputStream;
 import java.util.List;
 
 public class Test01 {
-    @Test
-    public void testFindAll(){
+    private SqlSession sqlSession;
+
+    @Before
+    public void init() {
         // ssfb --> 工人
         // factory --> 工厂
         // sqlSession --> 车，用于装 sql语句
@@ -26,14 +30,24 @@ public class Test01 {
             throw new RuntimeException(e);
         }
         SqlSessionFactory factory = ssfb.build(resourceAsStream);
-        SqlSession sqlSession = factory.openSession();
+        sqlSession = factory.openSession();
+    }
+
+    @Test
+    public void testFindAll() {
+
         // 调用 sql语句
         List<Dept> list = sqlSession.selectList("findAll"); // 根据 id找到 sql语句
-        // 关闭 sqlSession
-        sqlSession.close();
+
         for (Dept dept : list) {
             System.out.println(dept);
         }
+    }
+
+    @After
+    public void release() {
+        // 关闭 sqlSession
+        sqlSession.close();
     }
 
 }
