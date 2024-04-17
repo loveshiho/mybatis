@@ -23,5 +23,6 @@
     <mappers>
         <mapper class="com.akai.mapper.EmpMapper"/>
         <mapper class="com.akai.mapper.DeptMapper"/>
+        <mapper class="com.akai.mapper.ProjectMapper"/>
     </mappers>
 </configuration>
