@@ -4,8 +4,27 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.akai.mapper.DeptMapper">
+    <!--Dept findDeptByDeptno(int deptno);
+        select="com.akai.mapper.EmpMapper.findEmpsByDeptno" 调用的另一个SQL语句
+        javaType="list"  实体类的属性数据类型
+        column="deptno"  另一个SQL语句所需参数，传入对应的列
+        jdbcType="INTEGER" 参数对应JDBC的数据类型
+        fetchType="eager"  加载方式 eager 积极加载 lazy 延迟加载-->
+    <resultMap id="deptJoinEmps" type="dept">
+        <id property="deptno" column="deptno"></id>
+        <result property="dname" column="dname"></result>
+        <result property="loc" column="loc"></result>
+        <collection property="emps"
+                    select="com.akai.mapper.EmpMapper.findEmpsByDeptno"
+                    javaType="list"
+                    column="deptno"
+                    fetchType="eager"
+        ></collection>
+    </resultMap>
     <!--Dept findDeptByDeptno(int deptno);-->
-    <select id="findDeptByDeptno" resultType="dept">
-        select * from db_01.dept where DEPTNO = #{10}
+    <select id="findDeptByDeptno" resultMap="deptJoinEmps">
+        select *
+        from db_01.dept
+        where DEPTNO = #{deptno}
     </select>
 </mapper>

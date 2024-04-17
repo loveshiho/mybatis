@@ -42,8 +42,6 @@ public class Test01 {
     public void testFindByDetpno(){
         Dept dept = deptMapper.findDeptByDeptno(20);
         System.out.println(dept);
-        List<Emp> emps = empMapper.findEmpsByDeptno(20);
-        emps.forEach(System.out::println);
     }
     @After
     public void release() {
