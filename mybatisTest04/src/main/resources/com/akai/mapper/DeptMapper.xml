@@ -18,7 +18,7 @@
                     select="com.akai.mapper.EmpMapper.findEmpsByDeptno"
                     javaType="list"
                     column="deptno"
-                    fetchType="eager"
+                    fetchType="lazy"
         ></collection>
     </resultMap>
     <!--Dept findDeptByDeptno(int deptno);-->

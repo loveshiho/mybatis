@@ -41,7 +41,7 @@ public class Test01 {
     @Test
     public void testFindByDetpno(){
         Dept dept = deptMapper.findDeptByDeptno(20);
-        System.out.println(dept);
+        // System.out.println(dept);    --> 懒加载
     }
     @After
     public void release() {
