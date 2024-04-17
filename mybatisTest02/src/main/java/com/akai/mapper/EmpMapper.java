@@ -15,4 +15,10 @@ public interface EmpMapper {
     List<Emp> findByIdAndSal2(@Param("empa") Emp empa, @Param("empb") Emp empb);
 
     List<Emp> findByEname(String ename);
+
+    int addEmp(Emp emp);
+
+    int updateEnameById(@Param("empno") int empno, @Param("ename") String ename);
+
+    int deleteById(int id);
 }

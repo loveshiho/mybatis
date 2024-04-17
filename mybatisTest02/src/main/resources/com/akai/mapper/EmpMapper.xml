@@ -48,4 +48,16 @@
     <select id="findByEname" resultType="emp">
         select * from db_01.emp where ENAME like concat('%',#{ename},'%')
     </select>
+    <!--int addEmp(Emp emp);-->
+    <insert id="addEmp" parameterType="emp">
+        insert into db_01.emp values(DEFAULT ,#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+    </insert>
+    <!--int updateEnameById(@Param("empno") int empno,@Param("ename") String ename);-->
+    <update id="updateEnameById">
+        update db_01.emp set ENAME = #{ename} where EMPNO = #{empno}
+    </update>
+    <!--int deleteById(int id);-->
+    <delete id="deleteById" parameterType="int">
+        delete from db_01.emp where EMPNO = #{id}
+    </delete>
 </mapper>
