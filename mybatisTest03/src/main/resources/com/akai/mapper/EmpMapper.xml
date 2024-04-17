@@ -20,7 +20,7 @@
         <!--
             association 处理一对一
             封装一对一信息关系的标签
-            property  emp类的属性名, private Dept dept;
+            property  emp类的属性名, private Dept aaa ——> aaa;
             javaType  用哪个类的对象给属性赋值
         -->
         <association property="dept" javaType="dept">
