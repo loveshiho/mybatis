@@ -5,8 +5,34 @@
 
 <mapper namespace="com.akai.mapper.EmpMapper">
     <sql id="empColumn">empno,ename,job,mgr,hiredate,sal,comm,deptno</sql>
-    <sql id="baseSelect">select <include refid="empColumn"></include> from emp</sql>
-    <select id="findAll">
-        <include refid="baseSelect"></include>
+    <sql id="baseSelect">select <include refid="empColumn"></include> from emp
+    </sql>
+    <!--Emp findEmpJoinDeptByEmpno(int empno);-->
+    <resultMap id="empJoinDept" type="emp">
+        <id property="empno" column="empno"></id>
+        <result property="ename" column="ename"></result>
+        <result property="job" column="job"></result>
+        <result property="sal" column="sal"></result>
+        <result property="hiredate" column="hiredate"></result>
+        <result property="mgr" column="mgr"></result>
+        <result property="comm" column="comm"></result>
+        <result property="deptno" column="deptno"></result>
+        <!--
+            association 处理一对一
+            封装一对一信息关系的标签
+            property  emp类的属性名, private Dept dept;
+            javaType  用哪个类的对象给属性赋值
+        -->
+        <association property="dept" javaType="dept">
+            <id column="deptno" property="deptno"></id>
+            <result column="dname" property="dname"></result>
+            <result column="loc" property="loc"></result>
+        </association>
+    </resultMap>
+    <select id="findEmpJoinDeptByEmpno" resultMap="empJoinDept">
+        select *
+        from emp e
+                 left join dept d on e.DEPTNO = d.DEPTNO
+        where EMPNO = #{empno}
     </select>
 </mapper>

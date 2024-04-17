@@ -37,9 +37,9 @@ public class Test01 {
         empMapper = sqlSession.getMapper(EmpMapper.class);
     }
     @Test
-    public void testFindAll() {
-        List<Emp> all = empMapper.findAll();
-        all.forEach(System.out::println);
+    public void testFindEmpJoinDeptByEmpno() {
+        Emp info = empMapper.findEmpJoinDeptByEmpno(7499);
+        System.out.println(info);
     }
     @After
     public void release() {

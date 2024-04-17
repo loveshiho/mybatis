@@ -19,5 +19,6 @@ public class Emp implements Serializable {
     private Double sal;
     private Double comm;
     private Integer deptno;
+    private Dept dept;
 }
 
