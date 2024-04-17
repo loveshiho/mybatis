@@ -8,4 +8,5 @@ public interface EmpMapper2 {
     List<Emp> findByCondition(Emp emp);
     List<Emp> findByCondition2(Emp emp);
     int updateByCondition(Emp emp);
+    List<Emp> findByIds(List<Integer> ids);
 }

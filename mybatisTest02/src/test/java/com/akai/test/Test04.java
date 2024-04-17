@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -75,6 +76,14 @@ public class Test04 {
         emp.setJob("Java");
         int i = empMapper.updateByCondition(emp);
         System.out.println(i);
+    }
+    @Test
+    public void findByDeptIds() {
+        List<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(20);
+        List<Emp> byIds = empMapper.findByIds(list);
+        byIds.forEach(System.out::println);
     }
     @After
     public void release() {

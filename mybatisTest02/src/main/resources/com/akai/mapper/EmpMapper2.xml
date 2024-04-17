@@ -97,4 +97,21 @@
                 where empno = #{empno}
             </set>
         </update>
+    <!--List<Emp> findByEmpnos1(int[] empnos);
+        collection=""  遍历的集合或者是数组
+                       参数是数组,collection中名字指定为array
+                       参数是List集合,collection中名字指定为list
+        separator=""   多个元素取出的时候 用什么文字分隔
+        open=""        以什么开头
+        close=""       以什么结尾
+        item=""        中间变量名
+        for(Person per : PersonList)
+    -->
+    <select id="findByIds" resultType="emp">
+            <include refid="baseSelect"></include>
+            where deptno in
+            <foreach collection="list" separator="," open="(" close=")" item="deptId">
+                #{deptId}
+            </foreach>
+    </select>
 </mapper>
