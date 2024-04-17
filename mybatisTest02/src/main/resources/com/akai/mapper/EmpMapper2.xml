@@ -68,4 +68,31 @@
                 </choose>
             </where>
         </select>
+        <update id="updateByCondition">
+            update db_01.emp
+            <set>
+                <if test="ename != null and ename != '' ">
+                    , ename = #{ename}
+                </if>
+                <if test="job != null and ename != '' ">
+                    , job = #{job}
+                </if>
+                <if test="mgr != null ">
+                    , mgr = #{mgr}
+                </if>
+                <if test="hiredate != null ">
+                    , hiredate = #{hiredate}
+                </if>
+                <if test="sal != null ">
+                    , sal = #{sal}
+                </if>
+                <if test="comm != null ">
+                    , comm = #{comm}
+                </if>
+                <if test="deptno != null ">
+                    , deptno = #{deptno}
+                </if>
+                where empno = #{empno}
+            </set>
+        </update>
 </mapper>

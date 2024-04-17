@@ -66,6 +66,16 @@ public class Test04 {
         List<Emp> emps = empMapper.findByCondition2(emp);
         emps.forEach(System.out::println);
     }
+    @Test
+    public void updateById() {
+        Emp emp = new Emp();
+        emp.setEmpno(7521);
+        emp.setSal(10000.0);
+        emp.setEname("cao");
+        emp.setJob("Java");
+        int i = empMapper.updateByCondition(emp);
+        System.out.println(i);
+    }
     @After
     public void release() {
         // 关闭 sqlSession
