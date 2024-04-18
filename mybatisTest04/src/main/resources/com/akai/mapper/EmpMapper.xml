@@ -8,4 +8,8 @@
     <select id="findEmpsByDeptno" resultType="emp">
         select * from emp where deptno = #{deptno}
     </select>
+    <!--Emp findEmpById(int empno);-->
+    <select id="findEmpById" resultType="emp">
+        select * from db_01.emp where EMPNO = #{empno}
+    </select>
 </mapper>
