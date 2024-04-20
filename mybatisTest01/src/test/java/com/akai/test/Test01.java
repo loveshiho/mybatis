@@ -37,7 +37,7 @@ public class Test01 {
     public void testFindAll() {
 
         // 调用 sql语句
-        List<Dept> list = sqlSession.selectList("findAll"); // 根据 id找到 sql语句
+        List<Dept> list = sqlSession.selectList("DeptMapper.findAll"); // 根据 id找到 sql语句
 
         for (Dept dept : list) {
             System.out.println(dept);
